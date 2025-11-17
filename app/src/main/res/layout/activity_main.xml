@@ -12,7 +12,7 @@
         android:id="@+id/textTOP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Погладь кота!"
+        android:text="@string/Tap_cat"
         android:textAlignment="center"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
-        android:text="Ну погладь меня уже"
+        android:text="@string/tap_me_please"
         android:textAlignment="center"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -46,5 +46,18 @@
         app:layout_constraintTop_toBottomOf="@+id/textTOP"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/cat" />
+
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00:00:00"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/textTOP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.771" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
