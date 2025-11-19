@@ -12,6 +12,7 @@ public class Cat {
     int x;
     int y;
     int width;
+    int height;
 
     int stepX = 10;
     int stepY = 10;
@@ -20,6 +21,7 @@ public class Cat {
         this.x = x;
         this.y = y;
         this.width = width;
+        this.height = height;
         Random rnd = new Random();
         stepX = rnd.nextInt(10) + 1;
 
@@ -34,11 +36,14 @@ public class Cat {
     }
 
     void move(){
-
         x+=stepX;
         y+=stepY;
         if (x > screenWidth - width || x < 0){
             stepX =-stepX;
+        }
+
+        if (y >screenHeight - height|| y < 0){
+            stepY =-stepY;
         }
         img.setX(x);
         img.setY(y);

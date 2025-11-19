@@ -17,11 +17,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-
-
-
 public class MainActivity extends AppCompatActivity {
-    public int screenWidth, screenHeight;
+    public static int screenWidth, screenHeight;
     int counter = 0;
     Handler handler;
     ConstraintLayout constraintLayout;
@@ -45,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         constraintLayout = findViewById(R.id.main);
         textView = findViewById(R.id.textBOTTOM);
         imageVasya = findViewById(R.id.imageVasya);
+        textTimer = findViewById(R.id.timer);
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -68,10 +66,9 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        long startTime = System.currentTimeMillis();
         handler = new Handler(Looper.getMainLooper());
-        textTimer = findViewById(R.id.timer);
-
+        startTime = System.currentTimeMillis();
+        update();
     }
 
     void moveCats() {
@@ -89,12 +86,16 @@ public class MainActivity extends AppCompatActivity {
                 handler.postDelayed(this, 16);
             }
         };
-
+        handler.post(runnable);
     }
 
     void updateTime() {
         long currentTime = (System.currentTimeMillis() - startTime)/1000;
-        textTimer.setText((currentTime - startTime) / 1000+ "");
+        long timeSecundes = currentTime/1000;
+        String timeHour = "" + timeSecundes/60/60;
+        String timeMin = ":" + timeSecundes/60%60 + timeSecundes/60%60%10;
+        String timeSec = ":" + timeSecundes%60/10 +timeSecundes%60%10;
+        textTimer.setText(timeHour + timeMin + timeSec);
     }
 
 }
