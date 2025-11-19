@@ -17,6 +17,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
     public static int screenWidth, screenHeight;
     int counter = 0;
@@ -48,14 +50,21 @@ public class MainActivity extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         screenWidth = displayMetrics.widthPixels;
         screenHeight = displayMetrics.heightPixels;
-        /*for (int i = 0; i < 5; i++) {
-            cat[i] = new Cat(constraintLayout,)
-        }*/
-        cats[0] = new Cat(constraintLayout, 430, 1750, 200, 260);
-        cats[1] = new Cat(constraintLayout, 700, 1666, 150, 400);
+        Random rand = new Random();
+        for (int i = 0; i < 5; i++) {
+            int x = rand.nextInt(500) + 100;
+            int y = rand.nextInt(900) + 200;
+            int width = rand.nextInt(150) + 150;
+            int height = rand.nextInt(200) + 150;
+            int speed = rand.nextInt(10) + 3;
+            cats[i] = new Cat(constraintLayout,x ,y, width, height, speed);
+
+        }
+        /*cats[0] = new Cat(constraintLayout, 430, 1550, 200, 260);
+        cats[1] = new Cat(constraintLayout, 470, 1550, 150, 400);
         cats[2] = new Cat(constraintLayout, 130, 250, 340, 260);
         cats[3] = new Cat(constraintLayout, 600, 200, 200, 275);
-        cats[4] = new Cat(constraintLayout, 900, 300, 200, 130);
+        cats[4] = new Cat(constraintLayout, 900, 300, 200, 130);*/
 
         imageVasya.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,13 +98,13 @@ public class MainActivity extends AppCompatActivity {
         handler.post(runnable);
     }
 
-    void updateTime() {
-        long currentTime = (System.currentTimeMillis() - startTime)/1000;
+    void updateTime(){
+        long currentTime = System.currentTimeMillis() - startTime;
         long timeSecundes = currentTime/1000;
-        String timeHour = "" + timeSecundes/60/60;
-        String timeMin = ":" + timeSecundes/60%60 + timeSecundes/60%60%10;
-        String timeSec = ":" + timeSecundes%60/10 +timeSecundes%60%10;
-        textTimer.setText(timeHour + timeMin + timeSec);
+        String timeHour = ""+timeSecundes/60/60;
+        String timeMin = ":"+timeSecundes/60%60/10 + timeSecundes/60%60%10;
+        String timeSec = ":" + timeSecundes%60/10 + timeSecundes%60%10;
+        textTimer.setText(timeHour+timeMin+timeSec);
     }
 
 }

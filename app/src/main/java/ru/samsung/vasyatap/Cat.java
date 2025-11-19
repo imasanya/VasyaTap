@@ -13,17 +13,18 @@ public class Cat {
     int y;
     int width;
     int height;
+    int speed;
+    int stepX;
+    int stepY;
 
-    int stepX = 10;
-    int stepY = 10;
 
-    public Cat(ConstraintLayout layout,int x, int y,  int width, int height){
+    public Cat(ConstraintLayout layout,int x, int y,  int width, int height, int speed){
+        this.speed = speed;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         Random rnd = new Random();
-        stepX = rnd.nextInt(10) + 1;
 
         img = new ImageView(layout.getContext());
         ConstraintLayout.LayoutParams params = new ConstraintLayout.LayoutParams(width, height);
@@ -33,6 +34,8 @@ public class Cat {
         layout.addView(img);
         img.setX(x);
         img.setY(y);
+        stepX = speed;
+        stepY = speed;
     }
 
     void move(){
