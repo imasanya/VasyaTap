@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     TextView textView;
     ImageView imageVasya;
     TextView textTimer;
-    Cat[] cats = new Cat[5];
+    Cat[] cats = new Cat[25];
     long startTime;
 
     @Override
@@ -51,12 +51,12 @@ public class MainActivity extends AppCompatActivity {
         screenWidth = displayMetrics.widthPixels;
         screenHeight = displayMetrics.heightPixels;
         Random rand = new Random();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < cats.length; i++) {
             int x = rand.nextInt(500) + 100;
             int y = rand.nextInt(900) + 200;
             int width = rand.nextInt(150) + 150;
             int height = rand.nextInt(200) + 150;
-            int speed = rand.nextInt(10) + 3;
+            int speed = rand.nextInt(7) + 5;
             cats[i] = new Cat(constraintLayout,x ,y, width, height, speed);
 
         }
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void moveCats() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < cats.length; i++) {
             cats[i].move();
         }
     }

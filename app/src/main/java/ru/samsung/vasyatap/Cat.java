@@ -24,7 +24,7 @@ public class Cat {
         this.y = y;
         this.width = width;
         this.height = height;
-        Random rnd = new Random();
+
 
         img = new ImageView(layout.getContext());
         ConstraintLayout.LayoutParams params = new ConstraintLayout.LayoutParams(width, height);
@@ -52,5 +52,7 @@ public class Cat {
         img.setY(y);
 
     }
+
+
 
 }
